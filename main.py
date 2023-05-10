@@ -33,7 +33,21 @@ class Deck:
                 created_card = Card(suit,rank)
                 self.all_cards.append(created_card)
 
+
+
+    def shuffle(self):
+        random.shuffle(self.all_cards)
+
+
+    def deal_one(self):
+        return self.all_cards.pop()
+
 new_deck = Deck()
-count = 0
-first_card = new_deck.all_cards[-1]
-print(first_card)
+
+new_deck.shuffle()
+
+mycard = new_deck.deal_one()
+print(mycard)
+
+print(len(new_deck.all_cards))
+
