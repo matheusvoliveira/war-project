@@ -23,3 +23,17 @@ print(values[three_of_clubs.rank])
 print(values[two_hearts.rank])
 
 print(two_hearts.value < three_of_clubs.value)
+
+
+class Deck:
+    def __init__(self):
+        self.all_cards = []
+        for suit in suits:
+            for rank in ranks:
+                created_card = Card(suit,rank)
+                self.all_cards.append(created_card)
+
+new_deck = Deck()
+count = 0
+first_card = new_deck.all_cards[-1]
+print(first_card)
