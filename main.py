@@ -140,6 +140,7 @@ while game_on:
                 game_on = False
                 break
             else:
+                
                 for num in range():
                     player_one_cards.append(player_one.remove_one())
                     player_two_cards.append(player_two.remove_one())
