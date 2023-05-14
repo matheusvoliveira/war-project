@@ -29,18 +29,56 @@ class Deck:
                 self.all_cards.append(created_card)
 
     def suffle(self):
-        random.shuffle(self.all_cards)
+        suffle = random.shuffle(self.all_cards)
 
     def deal_one(self):
-        return self.all_cards.pop()
+        return self.all_cards.pop(0)
 
-class Hand:
+value_list = []
+class Player:
     def __init__(self):
-        self.cards = []
-        self.value = 0
-        self.aces = 0
-    def add_card(self,card):
-        card = se
+        deck = Deck()
+        self.deck_sufffle = deck.suffle()
+
+
+
+        self.cards = deck.all_cards
+        print(self.cards[0])
+        print(self.cards[1])
+        value_list.append(self.cards[0].value)
+        value_list.append(self.cards[1].value)
+        print(value_list)
+        self.cards.pop(0)
+        self.cards.pop(1)
+        print('Matheus')
+
+    def value_list_sum(self):
+        soma = sum(value_list)
+        print(soma)
+        if soma > 21:
+            return True
+    def request(self):
+
+        while True:
+            hit_stand = input('Choose: \nHit[1] \n'
+              'Stand[2]: ')
+            if hit_stand == '1' and self.value_list_sum() == False:
+                print(self.cards[0])
+                self.cards.pop(0)
+                value_list.append(self.cards[0].value)
+                print(value_list)
+            elif self.value_list_sum() == True:
+                break
+            else:
+                False
+        print('tchau')
+
+
+
+
+player = Player()
+player.request()
+
 
 
 
