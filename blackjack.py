@@ -39,9 +39,6 @@ class Player:
     def __init__(self):
         deck = Deck()
         self.deck_sufffle = deck.suffle()
-
-
-
         self.cards = deck.all_cards
         print(self.cards[0])
         print(self.cards[1])
@@ -50,34 +47,48 @@ class Player:
         print(value_list)
         self.cards.pop(0)
         self.cards.pop(1)
-        print('Matheus')
 
     def value_list_sum(self):
         soma = sum(value_list)
         print(soma)
-        if soma > 21:
+        if soma < 21:
             return True
     def request(self):
-
-        while True:
-            hit_stand = input('Choose: \nHit[1] \n'
-              'Stand[2]: ')
-            if hit_stand == '1' and self.value_list_sum() == False:
-                print(self.cards[0])
-                self.cards.pop(0)
-                value_list.append(self.cards[0].value)
-                print(value_list)
-            elif self.value_list_sum() == True:
-                break
+        on = True
+        while on:
+            if self.value_list_sum():
+                hit_stand = input('Choose: \nHit[1] \nStand[2]: ')
+                if hit_stand == '1':
+                    print(self.cards[0])
+                    self.cards.pop(0)
+                    value_list.append(self.cards[0].value)
+                    print(value_list)
             else:
-                False
+                on = False
         print('tchau')
 
 
+# player = Player()
+# player.request()
+
+value_list_dealer = []
+class Dealer:
+    def __init__(self):
+        print("Dealer's round")
+        deck = Deck()
+        self.deck_sufffle = deck.suffle()
+        self.cards = deck.all_cards
+        print('misterious card')
+        print(self.cards[1])
+        value_list_dealer.append(self.cards[0].value)
+        value_list_dealer.append(self.cards[1].value)
+        print(value_list_dealer)
+        self.cards.pop(0)
+        self.cards.pop(1)
 
 
-player = Player()
-player.request()
+
+dealer = Dealer()
 
 
 
