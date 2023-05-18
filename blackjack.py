@@ -161,6 +161,7 @@ if __name__ == '__main__':
     dealer.requesty()
     p = Winner()
 
+
 # corrigir a logica do campeão
 # logica do az
 # refatorar quando tiver tempo
