@@ -75,6 +75,7 @@ class Player:
                     break
             else:
                 on = False
+
         print('tchau')
 
 
@@ -102,15 +103,16 @@ class Dealer:
             return True
 
     def compare_dealer_player(self):
-        Player().get_value_list_sum()
+        if sum(value_list) >= sum(value_list_dealer):
+            return True
 
     def requesty(self):
-        print(15 * '-')
-        print("Dealer's round")
-        print(15 * '-')
         on = True
         while on:
-            if self.value_list_dealer_sum() or self.compare_dealer_player():
+            if self.value_list_dealer_sum() or self.compare_dealer_player() and value_list_dealer <= 21:
+                print(15 * '-')
+                print("Dealer's round")
+                print(15 * '-')
                 print(self.cards[0])
                 value_list_dealer.append(self.cards[0].value)
                 self.cards.pop(0)
@@ -119,13 +121,46 @@ class Dealer:
                 on = False
         print('tchau')
 
+    def winner(self):
+        if self.compare_dealer_player():
+            print('Player wins')
+        else:
+            print('Dealer wins')
+
+
+
+# class Winner:
+#     def __init__(self):
+#         self.compare_dealer_player = Dealer().compare_dealer_player()
+#
+#     def winner(self):
+#         if self.compare_dealer_player:
+#             print('Player wins')
+#         else:
+#             print('Dealer wins')
+
+
+class Winner:
+    def __init__(self):
+        self.dealer = Dealer()
+        self.player = Player()
+        self.compare_dealer_player = self.dealer.compare_dealer_player()
+
+    def determine_winner(self):
+        if self.compare_dealer_player:
+            print('Player wins')
+        else:
+            print('Dealer wins')
+
+
 
 if __name__ == '__main__':
     dealer = Dealer()
     player = Player()
     player.request()
     dealer.requesty()
+    p = Winner()
 
-
-
-
+# corrigir a logica do campeão
+# logica do az
+# refatorar quando tiver tempo
