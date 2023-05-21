@@ -17,10 +17,6 @@ class Card:
         return self.rank + ' of ' + self.suit
 
 
-
-
-
-
 class Deck:
     def __init__(self):
         self.all_cards = []
